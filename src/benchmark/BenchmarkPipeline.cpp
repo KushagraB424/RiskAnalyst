@@ -11,7 +11,7 @@
 
 namespace RiskAnalyst {
 
-BenchmarkPipeline::BenchmarkPipeline(const Config& config) : m_config(config) {}
+BenchmarkPipeline::BenchmarkPipeline(const Config& config, const std::string& outputDir) : m_config(config), m_outputDir(outputDir) {}
 
 void BenchmarkPipeline::savePayoffsSample(const std::vector<double>& payoffs, const std::string& filename, size_t maxSamples) {
     std::ofstream out(filename);
@@ -36,7 +36,7 @@ void BenchmarkPipeline::saveConfig(const std::string& filename) {
 
 void BenchmarkPipeline::runAll() {
     std::cout << "Running Benchmark Pipeline..." << std::endl;
-    saveConfig("../results/benchmark_config.txt");
+    saveConfig(m_outputDir + "/benchmark_config.txt");
     
     CpuSequentialEngine cpuSeq;
     CpuOpenMPEngine cpuOmp;
@@ -88,7 +88,7 @@ void BenchmarkPipeline::runAll() {
                              std::abs(metricsOpt.meanReturn - refMean)/refMean});
                              
         if (paths == m_config.benchmark.pathCounts.back()) {
-            savePayoffsSample(resOpt.payoffs, "../results/payoffs_sample.csv");
+            savePayoffsSample(resOpt.payoffs, m_outputDir + "/payoffs_sample.csv");
         }
     }
 }

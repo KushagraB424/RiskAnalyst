@@ -8,13 +8,14 @@ namespace RiskAnalyst {
 
 class BenchmarkPipeline {
 public:
-    BenchmarkPipeline(const Config& config);
+    BenchmarkPipeline(const Config& config, const std::string& outputDir);
     void runAll();
     void saveResultsCsv(const std::string& filename);
     void savePayoffsSample(const std::vector<double>& payoffs, const std::string& filename, size_t maxSamples = 100000);
     
 private:
     Config m_config;
+    std::string m_outputDir;
     std::vector<BenchmarkResult> m_results;
 };
 
