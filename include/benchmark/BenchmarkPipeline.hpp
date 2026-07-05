@@ -11,6 +11,7 @@ public:
     BenchmarkPipeline(const Config& config, const std::string& outputDir);
     void runAll();
     void saveResultsCsv(const std::string& filename);
+    void saveConfig(const std::string& filename);
     void savePayoffsSample(const std::vector<double>& payoffs, const std::string& filename, size_t maxSamples = 100000);
     
 private:

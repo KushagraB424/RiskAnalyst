@@ -127,8 +127,8 @@ SimulationResult CudaEngine::runSimulation(const Config& config) {
     result.totalSimulations = numPaths;
     result.timeSteps = numSteps;
     result.optionType = config.simulation.optionType;
-    result.executionTimeMs = elapsed.count();
-    result.throughput = (numPaths / (result.executionTimeMs / 1000.0));
+    result.totalExecutionTimeMs = elapsed.count();
+    result.throughput = (numPaths / (result.totalExecutionTimeMs / 1000.0));
 
     return result;
 }
