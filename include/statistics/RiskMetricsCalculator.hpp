@@ -1,5 +1,6 @@
 #pragma once
 #include "Types.hpp"
+#include "Config.hpp"
 #include <vector>
 
 namespace RiskAnalyst {
