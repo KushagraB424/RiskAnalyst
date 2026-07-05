@@ -78,7 +78,8 @@ def plot_breakdown(df, out_dir):
     colors = ['#ff9999','#66b3ff','#99ff99']
     
     plt.figure(figsize=(8,8))
-    plt.pie(times, labels=labels, autopct='%1.1f%%', startangle=140, colors=colors, wedgeprops={'edgecolor': 'black'})
+    wedges, texts, autotexts = plt.pie(times, labels=None, autopct='%1.1f%%', startangle=140, colors=colors, wedgeprops={'edgecolor': 'black'})
+    plt.legend(wedges, labels, loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
     plt.title(f'CUDA Time Breakdown (N = {max_path:,.0f})')
     plt.savefig(f"{out_dir}/transfer_breakdown.png", bbox_inches='tight')
     plt.close()
